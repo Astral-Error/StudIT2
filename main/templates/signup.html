@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sign Up</title>
+</head>
+<body>
+    <h2>Sign Up</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.username.label }} {{ form.username }}<br>
+        {{ form.email.label }} {{ form.email }}<br>
+        {{ form.password.label }} {{ form.password }}<br>
+        {{ form.registration_no.label }} {{ form.registration_no }}<br>
+        {{ form.branch.label }} {{ form.branch }}<br>
+        {{ form.enrollment_year.label }} {{ form.enrollment_year }}<br>
+        <button type="submit">Sign Up</button>
+    </form>
+    <a href="{% url 'login' %}">Login</a>
+</body>
+</html>

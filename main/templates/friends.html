@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Friend Requests</h2>
+
+<h3>Pending Requests You've Sent</h3>
+<ul>
+    {% for request in sent_requests %}
+        <li>To {{ request.to_user.username }} ({{ request.status }})</li>
+    {% empty %}
+        <li>No pending requests sent.</li>
+    {% endfor %}
+</ul>
+
+<h3>Received Friend Requests</h3>
+<ul>
+    {% for request in received_requests %}
+        <li>From {{ request.from_user.username }}
+            <a href="{% url 'accept_friend_request' request.id %}">Accept</a> |
+            <a href="{% url 'decline_friend_request' request.id %}">Decline</a>
+        </li>
+    {% empty %}
+        <li>No friend requests received.</li>
+    {% endfor %}
+</ul>
+
+<h3>Friends</h3>
+<ul>
+    {% for friend in friends %}
+        <li>{{ friend.username }}</li>
+    {% empty %}
+        <li>You have no friends yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
