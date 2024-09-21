@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .forms import SignUpForm
-from .models import Student,FriendRequest, Friendship
+from .models import Student,FriendRequest, Friendship, Session
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.urls import reverse
@@ -98,3 +98,30 @@ def decline_friend_request(request, request_id):
     if friendship.to_user == request.user:
         friendship.delete()  # Simply delete the request
     return HttpResponseRedirect(reverse('friends'))
+
+def session_hub(request):
+    if request.method == "POST":
+        title = request.POST['title']
+        purpose = request.POST['purpose']
+        branch = request.POST['branch']
+        start_date = request.POST['start_date']
+        start_time = request.POST['start_time']
+        end_date = request.POST['end_date']
+        end_time = request.POST['end_time']
+
+        session = Session(
+            user=request.user,
+            title=title,
+            purpose=purpose,
+            branch=branch,
+            start_date=start_date,
+            start_time=start_time,
+            end_date=end_date,
+            end_time=end_time
+        )
+        session.save()
+
+    my_sessions = Session.objects.filter(user=request.user)
+    all_sessions = Session.objects.all()  # Fetch all sessions for View Sessions panel
+
+    return render(request, 'session_hub.html', {'my_sessions': my_sessions, 'all_sessions': all_sessions})

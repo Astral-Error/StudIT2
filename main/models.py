@@ -1,3 +1,5 @@
+from datetime import datetime
+from django.utils import timezone
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -9,6 +11,28 @@ class Student(models.Model):
 
     def __str__(self):
         return self.user.username
+    
+class Session(models.Model):
+    title = models.CharField(max_length=100)
+    purpose = models.CharField(max_length=20)
+    branch = models.CharField(max_length=50)
+    start_date = models.DateField()
+    start_time = models.TimeField()
+    end_date = models.DateField()
+    end_time = models.TimeField()
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    @property
+    def start_datetime(self):
+        return timezone.make_aware(datetime.combine(self.start_date, self.start_time))
+
+    @property
+    def end_datetime(self):
+        return timezone.make_aware(datetime.combine(self.end_date, self.end_time))
+
+    def is_active(self):
+        now = timezone.now()
+        return self.start_datetime <= now <= self.end_datetime
 
 class FriendRequest(models.Model):
     from_user = models.ForeignKey(User, related_name='sent_requests', on_delete=models.CASCADE)
@@ -33,4 +57,3 @@ class Friendship(models.Model):
 
     class Meta:
         unique_together = ('from_user', 'to_user')
-    

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>SessionHub</h2>
+
+<div>
+    <h3>Create Session</h3>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="title">Title:</label>
+        <input type="text" name="title" required>
+        
+        <label for="purpose">Purpose:</label>
+        <select name="purpose" required>
+            <option value="Academics">Academics</option>
+            <option value="CodeSesh">CodeSesh</option>
+            <option value="Other">Other</option>
+        </select>
+        
+        <label for="branch">Branch:</label>
+        <select name="branch" required>
+            <option value="CSE Core">CSE Core</option>
+            <option value="CSE+Spec">CSE+Spec</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="Mechanical">Mechanical</option>
+            <option value="Civil">Civil</option>
+            <option value="Biotechnology">Biotechnology</option>
+            <option value="Any">Any</option>
+        </select>
+        
+        <label for="start_date">Start Date:</label>
+        <input type="date" name="start_date" required>
+        
+        <label for="start_time">Start Time:</label>
+        <input type="time" name="start_time" required>
+        
+        <label for="end_date">End Date:</label>
+        <input type="date" name="end_date" required>
+        
+        <label for="end_time">End Time:</label>
+        <input type="time" name="end_time" required>
+        
+        <button type="submit">Create Session</button>
+    </form>
+</div>
+
+<div>
+    <h3>My Sessions</h3>
+    <ul>
+        {% for session in my_sessions %}
+            <li>{{ session.title }} - {{ session.is_active|yesno:"Active,Expired" }}</li>
+        {% endfor %}
+    </ul>
+</div>
+
+<div>
+    <h3>View Sessions</h3>
+    <ul>
+        {% for session in all_sessions %}
+            <li>
+                <strong>Username:</strong> {{ session.user.username }}<br>
+                <strong>Title:</strong> {{ session.title }}<br>
+                <strong>Purpose:</strong> {{ session.purpose }}<br>
+                <strong>Branch:</strong> {{ session.branch }}<br>
+                <strong>Start Date:</strong> {{ session.start_date }}<br>
+                <strong>Start Time:</strong> {{ session.start_time }}<br>
+                <strong>End Date:</strong> {{ session.end_date }}<br>
+                <strong>End Time:</strong> {{ session.end_time }}<br>
+                <strong>Status:</strong> {{ session.is_active|yesno:"Active,Expired" }}<br>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}
