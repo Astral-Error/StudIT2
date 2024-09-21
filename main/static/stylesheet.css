@@ -17,11 +17,22 @@ body{
     padding: 0px;
 }
 
+.overlays{
+    position:absolute;
+    align-items: center;
+    align-content: center;
+    background-color: rgba(0,0,0,0.69);
+    height: 100%;
+    width: 100%;
+}
+
 .StudIT{
     position:absolute;
     font-family: "Figtree";
+    src: url(./assets/Figtree-Light.ttf);
     top: 10px;
     left: 30px;
+    text-decoration: ;
 }
 
 .Welcome_message {
