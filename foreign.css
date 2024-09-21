@@ -1,0 +1,294 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url(../assets/bg_image.jpg);
+    background-size: cover;
+    background-color: #2b2b2b;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100wh;
+    height: 100vh;
+    padding: 0px;
+}
+
+.overlays{
+    position:absolute;
+    align-items: center;
+    align-content: center;
+    background-color: rgba(0,0,0,0.69);
+    height: 100%;
+    width: 100%;
+}
+
+.Container{
+    height: 100%;
+    width: 100%;
+}
+
+.Navigation_Bar{
+    position: absolute;
+    font-family: 'Figtree';
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    background-color: #00000000;
+    right: 30px;
+    top: 10px;
+    height:50px;
+    width:500px;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a{
+    position:relative;
+    justify-content: center;
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.Logo{
+    position:absolute;
+    font-family: "Figtree";
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+    left: 30px;
+}
+
+.menu-icon {
+    position: relative;
+    top: 13px;
+    right: 0px;
+    font-size: 2rem; 
+    color: #fff; 
+    transition: all 0.3s ease-in-out;
+}
+
+
+.menu-icon:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); /* Glow effect */
+}
+
+
+.menu-icon::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px; 
+    left: 0;
+    background-color: #fff;
+    transition: width 0.3s ease-in-out;
+}
+
+.menu-icon:hover::after {
+    width: 100%;
+}
+
+
+.Welcome_message {
+    list-style: none;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    height: 80px;
+    width: 600px;
+    top: 300px;
+    left: 460px;
+    transition: transform 0.3s ease;
+}
+
+
+.Welcome_message:hover {
+    transform: scale(1.1);
+}
+
+.Welcome_message a{
+    color: white;
+    text-decoration: none;
+}
+
+.M1{
+    font-family: "Monarque";
+    font-style: italic;
+    font-weight: 100;
+    font-size: 86px;
+    src:url(../assets/Monarque/Monarque-Italic.otf);
+    text-align: center;
+}
+
+.M2{
+    font-family: "Sequel-Sans";
+    src:url(../assets/Sequel_sans_ttf/Sequel\ Sans\ Light\ Disp.ttf);
+    font-weight: 100;
+    font-style:normal;
+    font-size: 86px;
+    text-align: center;
+}
+
+.Leaderboard {
+    position: relative;
+    font-size: 2rem; 
+    color: #fff; 
+    text-decoration: none; 
+    transition: all 0.3s ease-in-out;
+}
+
+
+.Leaderboard:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); /* Glow effect */
+}
+
+
+.Leaderboard::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff; 
+    transition: width 0.3s ease-in-out; 
+}
+
+.Leaderboard:hover::after {
+    width: 100%;
+}
+
+
+.friends-link {
+    position: relative;
+    font-size: 2rem; 
+    color: #fff; 
+    text-decoration: none; 
+    transition: all 0.3s ease-in-out; 
+}
+
+/* Glow Effect */
+.friends-link:hover {
+    transform: scale(1.1);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); /* Glow effect */
+}
+
+/* Underline animation */
+.friends-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff; 
+    transition: width 0.3s ease-in-out; 
+}
+
+.friends-link:hover::after {
+    width: 100%; 
+}
+
+
+
+.Dashboard {
+    position: relative;
+    font-size: 2rem;
+    color: #fff;
+    text-decoration: none; 
+    transition: all 0.3s ease-in-out;
+}
+
+/* Glow Effect */
+.Dashboard:hover {
+    transform: scale(1.1); 
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); /* Glow effect */
+}
+
+/* Underline animation */
+.Dashboard::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #fff; 
+    transition: width 0.3s ease-in-out;
+}
+
+.Dashboard:hover::after {
+    width: 100%;
+}
+
+
+.menu {
+    position: fixed;
+    top: 0;
+    right: -300px; /* Adjust based on your design */
+    width: 250px; /* Width of the menu */
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    transition: right 0.3s ease; /* Smooth transition */
+    z-index: 1000; /* Ensure it appears above other elements */
+}
+
+.menu.active {
+    right: 0; /* Slide in */
+}
+
+.menu-links {
+    list-style: none;
+    padding: 20px; /* Space inside the menu */
+}
+
+.menu-links li {
+    margin: 20px 0; /* Spacing between items */
+}
+
+.menu-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.login-button {
+    position: absolute;
+    display: flex;
+    top: 500px;
+    left: 715px;
+    justify-content: center; /* Center the button */
+    margin-top: 20px; /* Space between Welcome_message and button */
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px; /* Button size */
+    background-color: #ffffff; /* White background */
+    color: #2b2b2b; /* Black text */
+    font-size: 18px; /* Font size */
+    font-family: 'Figtree', sans-serif; /* Font family */
+    text-align: center;
+    text-decoration: none; /* Remove underline */
+    border-radius: 25px; /* Rounded corners */
+    border: 2px solid #2b2b2b; /* Add a border */
+    transition: all 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Hover effect: Invert colors */
+.btn:hover {
+    background-color: #2b2b2b; /* Black background */
+    color: #ffffff; /* White text */
+    transform: scale(1.05); /* Slightly enlarge on hover */
+}

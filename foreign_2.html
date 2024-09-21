@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudIT</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <div class="overlays">
+        <div class="Container">
+            <h1 class="Logo">StudIT</h1>
+            <div class="Navigation_Bar">
+
+                <nav class="Navbar">
+                    <ul class="nav-links">
+                        <li class="Leaderboard"><a href="../Kapish-Workspace/leaderboard/leaderboard.html">Leaderboard</a></li>
+                        <li class="Dashboard"><a href="#">Dashboard</a></li>
+                        <li class="friends-link"><a href="#">Friends</a></li>
+                        <li><a href="#" class="menu-icon">&#9776;</a></li>
+                    </ul>
+                </nav><!--End OF NavBar-->
+
+            </div><!--End of Navigation_Bar-->
+
+            <div class="menu">
+                <ul class="menu-links">
+                    <li><a href="../Kapish-Workspace/leaderboard/leaderboard.html">Leaderboard</a></li>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Friends</a></li>
+                </ul>
+            </div>
+    
+            <div class="Main_Content">
+                <h4></h4>
+            </div>
+        </div><!--End of containter Class-->
+        
+        <div class="Welcome_message">
+            <li><a href="../Kapish-Workspace/signin/index.html">
+            <h1 class="M1">Welcome to</h1>
+            <h2 class="M2">StudIT</h2>
+            </a>
+            </li>
+        </div>
+
+        <div class="login-button">
+            <a href="../Kapish-Workspace/signin/index.html" class="btn">Log In</a>
+        </div>
+        
+
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const menuIcon = document.querySelector('.menu-icon');
+    const menu = document.querySelector('.menu');
+
+    // Toggle the menu when the menu icon is clicked
+    menuIcon.addEventListener('click', function(event) {
+        event.stopPropagation(); // Prevent event from bubbling up to the document
+        menu.classList.toggle('active');
+    });
+
+    // Close the menu when clicking outside of it
+    document.addEventListener('click', function(event) {
+        if (menu.classList.contains('active') && !menu.contains(event.target) && !menuIcon.contains(event.target)) {
+            menu.classList.remove('active');
+        }
+    });
+});
+    </script>
+</body>
+</html>
